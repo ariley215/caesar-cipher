@@ -27,7 +27,9 @@ def encrypt(text, shift):
         shifted_position = (char_position + shift) % number_of_characters
         shifted_char = base_code + shifted_position
         encrypted_text += chr(shifted_char)
-
+      elif char.isspace():
+        encrypted_text += char
+      else: encrypted_text += char
     return encrypted_text
 
 
