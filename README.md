@@ -18,7 +18,7 @@ Create an encrypt function that takes in a plain text phrase and a numeric shift
   - E.g. encrypt(‘zzz’,1) would return ‘aaa’.
 - Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.*completed 01-31-2024 4:30PM EST*
 - Create a crack function that will decode the cipher so that an encrypted message can be transformed into its original state WITHOUT access to the key.*in progess*
-- Devise a method for the computer to determine if code was broken with minimal human guidance.*in progress*
+- Devise a method for the computer to determine if code was broken with minimal human guidance.*in  progress*
 
 ## Setup
 

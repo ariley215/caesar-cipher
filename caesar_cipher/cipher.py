@@ -1,4 +1,5 @@
 from caesar_cipher.corpus_loader import word_list, name_list
+from nltk.corpus import words
 import re
 
 number_of_characters = 26
@@ -25,7 +26,7 @@ def encrypt(text, shift):
 
 
 def decrypt(encoded, shift):
-    return encrypt(encoded, -shift)
+    return encrypt(encoded, shift * -1)
 
 
 def count_words(text):
@@ -33,31 +34,53 @@ def count_words(text):
     word_count = 0
 
     for string in input_strings:
+        print(string)
         word = re.sub(r"[^A-Za-z]+", "", string)
         if word.lower() in word_list or word in name_list:
-            print("english word: " + word)
+            # print("english word: " + word)
             word_count += 1
         else:
-            print("not an english word: " + word)
-
+            # print("not an english word: " + word)
+            pass
     return word_count
 
 
-def calculate_word_validity_ratio(decrypted_text, word_list):
-    words = decrypted_text.split()
-    valid_words = sum(word.lower() in word_list for word in words)
-    ratio = (valid_words / len(words)) * 100
+def load_words():
+    english_words = set(word_list)
+    return english_words
+
+
+def calculate_word_validity_ratio(input_strings, word_count):
+    ratio = int((word_count/ len(input_strings)) * 100)
     return min(ratio, 100.0)
 
 
-def crack(encoded, english_words=word_list):
+def crack(encoded):
+    print("encoded: ", encoded)
     for shift in range(number_of_characters):
+        word_count = 0
         decrypted_text = decrypt(encoded, shift)
-        validity_ratio = calculate_word_validity_ratio(decrypted_text, english_words)
+        input_strings = decrypted_text.split()
+        for string in input_strings:
+            word = re.sub(r"[^a-zA-Z]+", "", string)
+            print('word', word)
+            if word in word_list:
+                word_count += 1
+                print('word count', word_count)
+            else:
+                pass
+        validity_ratio = calculate_word_validity_ratio(input_strings, word_count)
+        print("input strings, word count", input_strings, word_count)
         print(
             f"Shift: {shift} Text: {decrypted_text}, Validity Ratio: {validity_ratio}"
         )
-        if validity_ratio > 0.8:
+        if validity_ratio > 50:
             return decrypted_text
 
     return ""
+
+
+if __name__ == "__main__":
+    # test_string = "Ix fhw txe fofg of ndhrl, it nad tho hndrk of allkd."
+    english_words = load_words()
+    # print(english_words)
