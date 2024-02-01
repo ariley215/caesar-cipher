@@ -1,19 +1,36 @@
-LAB - Class xx
-Project: Project Name Here
-Author: Student/Group Name
-Links and Resources
-back-end server url (when applicable)
-front-end application (when applicable)
-Setup
-.env requirements (where applicable)
-i.e.
+# LAB - Class 18
 
-PORT - Port Number
-DATABASE_URL - URL to the running Postgres instance/db
+Project: Cryptography - the Caesar Cipher
+
+Author: Andrea Riley(Thiel)
+
+Collaborator: Stephanie Johnson
+
+## Feature Tasks
+
+Create an encrypt function that takes in a plain text phrase and a numeric shift.
+
+- the phrase will then be shifted that many letters. *completed 01-31-2024 3:30PM EST*
+  - E.g. encrypt(‘abc’,1) would return ‘bcd’. = E.g. encrypt(‘abc’, 10) would return ‘klm’.
+- shifts that exceed 26 should wrap around. *completed 01-31-2024 3:30PM EST*
+  - E.g. encrypt(‘abc’,27) would return ‘bcd’.
+- shifts that push a letter out or range should wrap around. *completed 01-31-2024 4:30PM EST*
+  - E.g. encrypt(‘zzz’,1) would return ‘aaa’.
+- Create a decrypt function that takes in encrypted text and numeric shift which will restore the encrypted text back to its original form when correct key is supplied.*completed 01-31-2024 4:30PM EST*
+- Create a crack function that will decode the cipher so that an encrypted message can be transformed into its original state WITHOUT access to the key.*in progess*
+- Devise a method for the computer to determine if code was broken with minimal human guidance.*in progress*
+
+## Setup
+
 How to initialize/run your application (where applicable)
-e.g. python main.py
-How to use your library (where applicable)
-Tests
-How do you run tests?
-Any tests of note?
-Describe any tests that you did not complete, skipped, etc
+
+python caesar_cipher/cipher.py
+
+## Tests
+
+Run tests: pytest tests/test_ceasar.py
+
+
+Describe any tests that you did not complete, skipped, etc:
+
+The two tests for the crack function are failing
