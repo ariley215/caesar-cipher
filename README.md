@@ -24,13 +24,9 @@ Create an encrypt function that takes in a plain text phrase and a numeric shift
 
 How to initialize/run your application (where applicable)
 
-python caesar_cipher/cipher.py
+python -m caesar_cipher.cipher
 
 ## Tests
 
 Run tests: pytest tests/test_ceasar.py
 
-
-Describe any tests that you did not complete, skipped, etc:
-
-The two tests for the crack function are failing
